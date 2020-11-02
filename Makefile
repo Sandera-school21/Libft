@@ -36,8 +36,8 @@ SRCS		= ft_memset.c \
 			  ft_strncmp.c \
 			  ft_strdup.c \
 			  ft_calloc.c \
-#			  ft_substr.c \
-#			  ft_strjoin.c \
+			  ft_substr.c \
+			  ft_strjoin.c \
 #			  ft_strtrim.c \
 #			  ft_split.c \
 #			  ft_itoa.c \
