@@ -8,7 +8,7 @@ static char	**list_free(char **s, size_t i)
 		i--;
 	}
 	free(s);
-	return (0);
+	return (NULL);
 }
 
 static int c_list(char const *s, char c)
@@ -34,14 +34,14 @@ static int c_list(char const *s, char c)
 char	**ft_split(char const *s, char c)
 {
 	char **list;
-	int list_index;
-	int count_sym;
-	int delim_count;
+	size_t list_index;
+	size_t count_sym;
+	size_t delim_count;
 
 	list_index = 0;
 	delim_count = c_list(s,c);
-	if (!s || !(list = (char **)malloc(sizeof(char *) * (c_list(s, c) + 1))))
-		return (0);
+	if (!s || !c || !(list = (char **)malloc(sizeof(char *) * (c_list(s, c) + 1))))
+		return (NULL);
 	while (*s)
 	{
 		if (*s == c)
@@ -56,6 +56,6 @@ char	**ft_split(char const *s, char c)
 			s = s + count_sym;
 		}
 	}
-	list[list_index] = 0;
+	list[list_index] = NULL;
 	return (list);
 }
