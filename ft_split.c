@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sandera <sandera@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/28 14:14:35 by sandera           #+#    #+#             */
+/*   Updated: 2020/11/04 22:10:18 by sandera          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static char	**list_free(char **s, size_t i)
@@ -11,7 +23,7 @@ static char	**list_free(char **s, size_t i)
 	return (NULL);
 }
 
-static int c_list(char const *s, char c)
+static int	c_list(char const *s, char c)
 {
 	int i;
 
@@ -30,18 +42,17 @@ static int c_list(char const *s, char c)
 	return (i);
 }
 
-
-char	**ft_split(char const *s, char c)
+char		**ft_split(char const *s, char c)
 {
-	char **list;
-	size_t list_index;
-	size_t count_sym;
-	size_t delim_count;
+	char	**list;
+	size_t	l_in;
+	size_t	count_sym;
+	size_t	d_c;
 
-	list_index = 0;
-	delim_count = c_list(s,c);
-	if (!s || !c || !(list = (char **)malloc(sizeof(char *) * (c_list(s, c) + 1))))
+	l_in = 0;
+	if (!s || !(list = (char **)malloc(sizeof(char *) * (c_list(s, c) + 1))))
 		return (NULL);
+	d_c = c_list(s, c);
 	while (*s)
 	{
 		if (*s == c)
@@ -51,11 +62,11 @@ char	**ft_split(char const *s, char c)
 			count_sym = 0;
 			while (*(s + count_sym) && *(s + count_sym) != c)
 				count_sym++;
-			if (list_index < delim_count && !(list[list_index++] = ft_substr(s,0,count_sym)))
-				return (list_free(list,list_index));
+			if (l_in < d_c && !(list[l_in++] = ft_substr(s, 0, count_sym)))
+				return (list_free(list, l_in));
 			s = s + count_sym;
 		}
 	}
-	list[list_index] = NULL;
+	list[l_in] = NULL;
 	return (list);
 }
