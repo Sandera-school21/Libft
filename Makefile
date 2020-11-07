@@ -45,7 +45,7 @@ SRCS		= ft_memset.c \
 			  ft_putnbr_fd.c \
 			  ft_strmapi.c \
 			  ft_split.c \
-#			  ft_itoa.c \
+			  ft_itoa.c \
 
 
 BNS_SRCS	= ft_lstnew.c \
